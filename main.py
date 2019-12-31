@@ -35,7 +35,7 @@ def train(config):
     # Create networks
     netg = Generator().to(device)
     if os.path.exists(full_gen_model_path):
-        netg = torch.load(full_gen_model_path)
+        netg.load_state_dict(torch.load(full_gen_model_path))
     else:
         model_par_dir = '/'.join(full_gen_model_path.split('/')[:-1])
         if not os.path.exists(model_par_dir):
@@ -45,7 +45,7 @@ def train(config):
     
     netd = Discriminator().to(device)
     if os.path.exists(full_dis_model_path):
-        netd = torch.load(full_dis_model_path)
+        netd.load_state_dict(torch.load(full_dis_model_path))
     else:
         model_par_dir = '/'.join(full_dis_model_path.split('/')[:-1])
         if not os.path.exists(model_par_dir):
@@ -142,7 +142,7 @@ def fake(config):
     full_gen_model_path = config.gene_model_path
 
     netg = Generator().to(device)
-    netg = torch.load(full_gen_model_path)
+    netg.load_state_dict(torch.load(full_gen_model_path))
 
     bs = 64
     fixed_noise = torch.randn((bs, nz, 1, 1), device = device, dtype = torch.float32)
