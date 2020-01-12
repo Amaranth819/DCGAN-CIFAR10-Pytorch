@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader
 
 def create_dataset(bs):
     dataset = torchvision.datasets.CIFAR10(
-        './vision/GAN/DCGAN/data/',
+        './data/',
         download = True,
         train = True,
         transform = transforms.Compose([
