@@ -10,7 +10,7 @@ nz = 1024
 
 class Generator(nn.Module):
     '''
-        Noise [bs, nz] -> Fake images [bs, 3, 32, 32]
+        Noise [bs, nz, 1, 1] -> Fake images [bs, 3, 32, 32]
     '''
     def __init__(self):
         super(Generator, self).__init__()
