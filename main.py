@@ -143,6 +143,7 @@ def fake(config):
 
     netg = Generator().to(device)
     netg.load_state_dict(torch.load(full_gen_model_path))
+    netg.eval()
 
     bs = 64
     fixed_noise = torch.randn((bs, nz, 1, 1), device = device, dtype = torch.float32)
